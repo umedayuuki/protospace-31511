@@ -11,9 +11,8 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.create(prototype_params)
-
     if @prototype.save
-      redirect_to root_path
+       redirect_to root_path
     else
       render :new
     end
@@ -28,16 +27,14 @@ class PrototypesController < ApplicationController
   def edit
     unless user_signed_in?
       redirect_to action: :index
-    
     end
     @prototypes = Prototype.find(params[:id])
   end
 
   def update
     prototype = Prototype.find(params[:id])
-
-    if prototype.update(prototype_params)
-      redirect_to prototype_path
+   if prototype.update(prototype_params)
+       redirect_to prototype_path
     else
       render :edit
     end
